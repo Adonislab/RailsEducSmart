@@ -1,7 +1,6 @@
 class CreateCourseDetails < ActiveRecord::Migration[7.2]
   def change
     create_table :course_details do |t|
-      t.integer :course_id
       t.string :content
       t.string :video
       t.string :audio

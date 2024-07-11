@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :evaluations, defaults: { format: :json }
   resources :course_details, defaults: { format: :json }
   resources :plannings, defaults: { format: :json }
+  resources :order_claims, defaults: { format: :json }
 end
