@@ -1,9 +1,8 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_course, only: [:show, :update, :destroy]
-  load_and_authorize_resource
 
   def index
+    @courses = Course.all
     render json: @courses
   end
 
@@ -12,6 +11,7 @@ class CoursesController < ApplicationController
   end
 
   def create
+    @course = Course.new(course_params)
     if @course.save
       render json: @course, status: :created
     else
@@ -34,7 +34,11 @@ class CoursesController < ApplicationController
 
   private
 
+  def set_course
+    @course = Course.find(params[:id])
+  end
+
   def course_params
-    params.require(:course).permit(:name, :start_time, :end_time, :user_id, :categories_id )
+    params.require(:course).permit(:name, :start_date, :end_date)
   end
 end

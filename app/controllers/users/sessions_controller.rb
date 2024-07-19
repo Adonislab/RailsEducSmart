@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  include RackSessionsFix
+ respond_to :json
+ include RackSessionsFix
   respond_to :json
   private
   def respond_with(current_user, _opts = {})
